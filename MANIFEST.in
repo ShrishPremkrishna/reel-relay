@@ -1,0 +1,19 @@
+include LICENSE README.md AGENTS.md CONTRIBUTING.md SECURITY.md config.example.toml requirements.lock requirements-server.lock Dockerfile .dockerignore .gitignore relay bootstrap.sh
+recursive-include docs *.md
+include deploy/compose.yaml deploy/config.container.example.toml deploy/Caddyfile.example
+recursive-include .github/workflows *.yml *.py
+recursive-include tests *.py
+recursive-include reelrelay/web *.html *.js *.css
+recursive-include reelrelay/engine *.py *.lock
+recursive-include reelrelay/migrations *.py
+include frontend/package.json frontend/package-lock.json frontend/index.html frontend/vite.config.ts frontend/tsconfig.json frontend/.prettierrc.json frontend/.gitignore frontend/README.md
+recursive-include frontend/src *.ts *.tsx *.css
+prune frontend/node_modules
+prune frontend/.cache
+prune frontend/coverage
+prune runtime
+prune .venv
+prune .venv-release
+prune deploy/config
+exclude config.toml
+global-exclude .env .env.* *.env *.pem *.key *.tsbuildinfo __pycache__ *.py[cod] .DS_Store

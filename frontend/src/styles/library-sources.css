@@ -1,0 +1,225 @@
+/* Source health and media library */
+.source-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.source-card {
+  padding: 23px;
+  min-width: 0;
+}
+.source-card > header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.source-avatar {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #283322;
+  color: #d0e0b5;
+  font-weight: 550;
+  font-size: 22px;
+  flex: 0 0 auto;
+}
+.source-card h2 {
+  font-size: 19px;
+  overflow-wrap: anywhere;
+}
+.source-card > header > div {
+  flex: 1;
+  min-width: 0;
+}
+.source-card header p {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.source-card > header > .badge {
+  margin-left: auto;
+}
+.source-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 23px 0;
+  margin: 0;
+}
+.source-metrics dt {
+  color: var(--muted);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.source-metrics dd {
+  margin: 9px 0 0;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+.source-card footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  padding-top: 17px;
+  color: var(--muted);
+  font-size: 12px;
+  gap: 16px;
+}
+.source-card .notice {
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+.source-explainer {
+  margin-top: 28px;
+  display: flex;
+  gap: 20px;
+  padding: 25px;
+  background: transparent;
+}
+.source-explainer > svg {
+  color: var(--accent);
+  margin-top: 3px;
+}
+.source-explainer h2 {
+  font-size: 18px;
+}
+.source-explainer p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-top: 10px;
+  max-width: 900px;
+}
+.library-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 30px 0 24px;
+}
+.library-toolbar .search-field {
+  flex: 1;
+  max-width: 470px;
+}
+.library-toolbar select {
+  width: auto;
+  min-width: 145px;
+}
+.library-toolbar > .metadata-line {
+  margin-left: auto;
+  text-align: right;
+}
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.asset-card {
+  overflow: hidden;
+  min-width: 0;
+}
+.asset-preview {
+  height: 185px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0c120e;
+  border-bottom: 1px solid var(--border);
+}
+.asset-preview video {
+  width: 100%;
+  height: 185px;
+  object-fit: contain;
+}
+.asset-audio {
+  padding: 22px;
+  background: radial-gradient(ellipse at 50% 100%, #2c3a24, #141c16 80%);
+}
+.asset-preview audio {
+  display: block;
+  width: 100%;
+  height: 40px;
+}
+.asset-placeholder {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.asset-placeholder svg {
+  color: #6e8369;
+}
+.asset-body {
+  padding: 20px;
+}
+.asset-kind {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.asset-body h2 {
+  font-size: 18px;
+  line-height: 1.45;
+  margin-top: 15px;
+}
+.asset-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 10px;
+  font-size: 12px;
+  color: var(--muted);
+  min-height: 26px;
+  margin: 11px 0;
+}
+.asset-tags span::before {
+  content: '#';
+  color: #61755d;
+}
+.asset-credits {
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+}
+.asset-credits summary {
+  padding: 12px 0 0;
+  font-size: 13px;
+  min-height: 40px;
+  color: var(--muted);
+}
+.asset-credits p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  margin-top: 10px;
+  overflow-wrap: anywhere;
+}
+.loading-panel {
+  padding: 45px 25px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.library-more {
+  text-align: center;
+  margin: 28px 0 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.library-more p {
+  margin-bottom: 14px;
+}
+.asset-preview > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

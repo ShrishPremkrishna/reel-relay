@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+RELAY_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+if [ -x "$RELAY_ROOT/.venv/bin/python" ]; then
+  RELAY_PYTHON="$RELAY_ROOT/.venv/bin/python"
+else
+  RELAY_PYTHON=python3
+fi
+cd "$RELAY_ROOT"
+exec "$RELAY_PYTHON" -B -m reelrelay "$@"

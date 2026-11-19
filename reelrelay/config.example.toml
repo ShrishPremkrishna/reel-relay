@@ -1,0 +1,125 @@
+# Paths are relative to this file. Account tokens belong in the encrypted vault.
+data_dir = "runtime"
+# Blank uses the managed data_dir/queue.sqlite3 database. Custom SQLite URLs are rejected.
+# For PostgreSQL, prefer a private REEL_RELAY_DATABASE_URL environment variable.
+# Used only when [media].engine = "reel-studio":
+# reel_studio = "/absolute/path/to/reel-studio"
+database_url = ""
+channels = []
+
+[media]
+# Standalone engine included with the application; no parent checkout is required.
+engine = "builtin"
+# setup-media --download-model small fills these paths under data_dir.
+transcription_model = ""
+transcription_python = ""
+transcription_language = ""
+# Blank paths use engine/assets/catalog.json and its directory, beneath data_dir.
+asset_catalog = ""
+asset_root = ""
+editorial_preferences = ""
+
+[editing]
+# Finished duration, separate from capture.pre_seconds/post_seconds context.
+min_seconds = 5
+max_seconds = 60
+# Burned speech subtitles; timed metadata/SRT remain available when disabled.
+captions_enabled = true
+caption_words = 3
+layout = "auto"
+sfx_enabled = true
+overlays_enabled = true
+max_sfx = 3
+max_overlays = 2
+sfx_gain_db = -20.0
+style_notes = ""
+
+[perception]
+# Optional extra media understanding for More selective. Steady volume uses local rendered-speech checks.
+# ollama requires a stored model with native audio input, not just vision support.
+# gemini requires a chosen model/key and explicit allow_cloud_upload = true.
+provider = "none"
+model = ""
+ollama_url = "http://127.0.0.1:11434"
+command = []
+allow_cloud_upload = false
+timeout_seconds = 240
+max_seconds = 120
+max_megabytes = 20
+
+[capture]
+quality = "720p60,720p,best"
+segment_seconds = 4
+retention_seconds = 300
+# Chat reactions arrive after the action. The editor trims this wider source window.
+pre_seconds = 50
+post_seconds = 25
+max_pending = 20
+# Positive values move the selected moment earlier in the recording.
+chat_video_offset_seconds = 0.0
+reconnect_seconds = 15
+max_channels = 8
+min_free_gb = 2.0
+
+[detector]
+window_seconds = 10
+baseline_windows = 30
+warmup_windows = 6
+ratio = 3.0
+min_messages = 12
+min_users = 6
+per_user_cap = 3
+cooldown_seconds = 60
+ignored_users = ["nightbot", "streamelements", "streamlabs", "moobot"]
+
+[agent]
+# throughput accepts decent entertaining moments; balanced also applies min_score.
+selection_mode = "balanced"
+# manual: evidence for any editor; command: JSON stdin/stdout;
+# ollama: installed local vision model; codex: installed, signed-in CLI;
+# gemini: chosen model and key in the encrypted vault or GEMINI_API_KEY.
+provider = "manual"
+# Gemini sends editorial text/contact sheets only after this explicit opt-in.
+allow_cloud_upload = false
+command = []
+model = ""
+ollama_url = "http://127.0.0.1:11434"
+timeout_seconds = 240
+min_score = 7.0
+min_confidence = 0.75
+max_jobs_per_hour = 12
+max_revisions = 2
+max_retries = 3
+allowed_flags = ["strong_language"]
+
+[publish]
+enabled = false
+dry_run = true
+auto_approve = false
+expected_username = ""
+max_per_day = 24
+min_interval_seconds = 1800
+api_version = "v24.0"
+# Use the HTTPS web server's signed delivery links OR an existing S3-compatible host.
+public_media_base = ""
+s3_bucket = ""
+s3_endpoint = ""
+s3_region = "auto"
+# Use dedicated REEL_RELAY_S3_ACCESS_KEY_ID / REEL_RELAY_S3_SECRET_ACCESS_KEY.
+# Personal AWS profiles are not used automatically. Configure the actual provider region.
+# A dedicated bucket lifecycle should expire reels/ after your chosen retention period;
+# include old versions and incomplete multipart uploads where relevant.
+
+[web]
+host = "127.0.0.1"
+port = 8765
+# A public server also requires REEL_RELAY_WEB_TOKEN (at least 32 characters).
+public_base_url = ""
+
+[auth]
+instagram_app_id = ""
+instagram_redirect_uri = ""
+twitch_client_id = ""
+
+# Add sources in the local UI. Enabling one does not establish repost permission.
+

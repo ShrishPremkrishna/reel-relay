@@ -1,0 +1,96 @@
+.media-dialog {
+  width: min(620px, calc(100vw - 32px));
+  max-height: calc(100dvh - 40px);
+  margin: auto;
+  padding: 26px;
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  color: var(--text);
+  background: var(--surface);
+  overflow-y: auto;
+  box-shadow: 0 24px 100px #0008;
+}
+.media-dialog::backdrop {
+  background: #050a07c9;
+  backdrop-filter: blur(5px);
+}
+.dialog-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.dialog-heading h2 {
+  font-size: 27px;
+  margin-top: 7px;
+}
+.media-dialog > .field-help {
+  margin: 16px 0 22px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.intake-fields {
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.upload-drop {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 22px 18px 8px;
+  border: 1px dashed #58634f;
+  border-radius: 10px;
+  margin: 0 0 22px;
+  background: #111a13;
+  text-align: center;
+}
+.upload-drop > svg {
+  color: var(--accent);
+}
+.upload-drop strong {
+  font-size: 16px;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+.upload-drop > span {
+  font-size: 14px;
+  color: var(--muted);
+}
+.upload-drop .field {
+  width: 100%;
+  text-align: left;
+  margin-top: 8px;
+}
+.upload-drop input {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+}
+.upload-drop input::file-selector-button {
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  color: var(--text);
+  background: var(--surface-raised);
+  padding: 8px 10px;
+  margin-right: 12px;
+  font: inherit;
+  cursor: pointer;
+}
+.dialog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+@media (max-width: 660px) {
+  .media-dialog {
+    padding: 20px;
+  }
+  .dialog-actions .button {
+    flex: 1;
+  }
+}

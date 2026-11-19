@@ -1,0 +1,50 @@
+# The provided image starts only the web control plane.
+# Full media workers additionally need FFmpeg, a functioning offline sandbox,
+# the explicitly installed transcription runtime/model and any chosen model server.
+data_dir = "/data"
+# Blank = managed /data/queue.sqlite3. The Compose example supplies PostgreSQL via
+# REEL_RELAY_DATABASE_URL; custom SQLite locations are not supported.
+database_url = ""
+channels = []
+
+[media]
+engine = "builtin"
+transcription_model = ""
+transcription_python = ""
+asset_catalog = ""
+asset_root = ""
+
+[editing]
+min_seconds = 5
+max_seconds = 60
+captions_enabled = true
+caption_words = 3
+layout = "auto"
+sfx_enabled = true
+overlays_enabled = true
+max_sfx = 3
+max_overlays = 2
+sfx_gain_db = -20.0
+style_notes = ""
+
+[agent]
+provider = "manual"
+model = ""
+# Gemini requires an encrypted key (or GEMINI_API_KEY) plus explicit opt-in.
+allow_cloud_upload = false
+
+[perception]
+provider = "none"
+model = ""
+allow_cloud_upload = false
+
+[web]
+host = "0.0.0.0"
+port = 8765
+# Replace before use; remote access also requires a private REEL_RELAY_WEB_TOKEN.
+public_base_url = "https://relay.example.invalid"
+
+[publish]
+enabled = false
+dry_run = true
+auto_approve = false

@@ -1,0 +1,21 @@
+:root {
+  color-scheme: dark;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --canvas: #101611;
+  --sidebar: #111812;
+  --surface: #182019;
+  --surface-raised: #232d24;
+  --surface-hover: #222d23;
+  --input: #121a14;
+  --border: #2b362c;
+  --border-strong: #39453a;
+  --text: #edf1e8;
+  --muted-bright: #bec8b8;
+  --muted: #95a18f;
+  --accent: #d5ed9b;
+  --accent-muted: #91aa64;
+  --ink: #18230f;
+  --warning: #ddbd88;
+  --sidebar-width: 242px;
+  --page-padding: 38px;
+}

@@ -1,0 +1,5 @@
+# Replace the hostname deliberately. Running this publicly may request a certificate.
+# Proxy access logs are omitted so OAuth codes and signed media URLs are not logged.
+relay.YOUR_DOMAIN {
+    reverse_proxy 127.0.0.1:8765
+}

@@ -1,0 +1,43 @@
+# Private control-plane example. Copy config.container.example.toml to config/config.toml.
+# Provide a real HTTPS origin, a random URL-safe database password, an encryption key,
+# and a server access token through a private environment file outside version control.
+services:
+  database:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: relay
+      POSTGRES_USER: relay
+      POSTGRES_PASSWORD: ${RELAY_DATABASE_PASSWORD:?Set a dedicated URL-safe database password}
+    volumes:
+      - database:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U relay -d relay']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+  web:
+    build: ..
+    environment:
+      REEL_RELAY_DATABASE_URL: postgresql+psycopg://relay:${RELAY_DATABASE_PASSWORD}@database:5432/relay
+      REEL_RELAY_WEB_TOKEN: ${REEL_RELAY_WEB_TOKEN:?Set a random server access token}
+      REEL_RELAY_ENCRYPTION_KEY: ${REEL_RELAY_ENCRYPTION_KEY:?Set the shared Fernet encryption key}
+    volumes:
+      - ./config:/config
+      - media:/data
+    ports:
+      - 127.0.0.1:8765:8765
+    depends_on:
+      database:
+        condition: service_healthy
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+volumes:
+  database:
+  media:
