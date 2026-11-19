@@ -122,4 +122,3 @@ instagram_redirect_uri = ""
 twitch_client_id = ""
 
 # Add sources in the local UI. Enabling one does not establish repost permission.
-

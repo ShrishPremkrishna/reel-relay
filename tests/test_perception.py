@@ -165,6 +165,7 @@ class AudioReceiptIntegration(unittest.TestCase):
                 return_value={"duration": self.duration, "streams": [{"codec_type": "audio"}]},
             ),
             patch("reelrelay.perception.media.run", side_effect=decode or self.decode_audio),
+            patch("reelrelay.perception.media.binary", side_effect=lambda name: name),
         ):
             return perception.inspect_media(self.cfg, self.source, purpose="selection")
 

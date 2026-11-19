@@ -163,7 +163,10 @@ class EngineArtifactContracts(unittest.TestCase):
                 }
             ]
         )
-        with self.assertRaisesRegex(RelayError, "decoded asset duration"):
+        with (
+            patch("reelrelay.engine.render.media.binary", side_effect=lambda name: name),
+            self.assertRaisesRegex(RelayError, "decoded asset duration"),
+        ):
             encode(
                 self.root / "source.mp4",
                 {"duration": 8, "width": 320, "height": 180, "has_audio": True},
